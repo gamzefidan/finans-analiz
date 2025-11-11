@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+Kişisel Finans Analiz Uygulaması
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bu proje, kişisel gelir ve giderleri takip etmeyi sağlayan basit bir React uygulamasıdır.
+Kullanıcılar gelir ve gider ekleyebilir, aylık maaşlarını girip kalan miktarı görüntüleyebilir ve gider dağılımını grafik üzerinden inceleyebilir.
 
-## Available Scripts
+\*\*\*Özellikler
 
-In the project directory, you can run:
+\*Gelir ve gider ekleme
 
-### `npm start`
+\*Tarih, kategori ve miktar bilgileriyle detaylı kayıt
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+\*LocalStorage kullanımı (veriler tarayıcıda saklanır)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+\*Aylık maaş giriş alanı
 
-### `npm test`
+\*Kalan para ve toplam özet hesaplaması
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+\*Gider dağılımını gösteren pasta grafiği (Recharts)
 
-### `npm run build`
+\*Saydam arka plan (blur efekti) ile modern arayüz
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+\*Binlik ayırıcı format (örnek: 30.000 TL)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+\*Negatif değer girişini engelleme
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Kullanılan Teknolojiler
 
-### `npm run eject`
+\*\*React
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+\*\*Recharts
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+\*\*CSS
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+\*\*LocalStorage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+\*\*Geliştirici Notları
 
-## Learn More
+\*Grafik yalnızca gider verisi eklendiğinde görünür.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+\*Maaş ve miktar alanlarında binlik ayırıcı bulunur.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+\*Form elemanları Enter tuşu ile de ekleme yapar.
 
-### Code Splitting
+\*Veriler LocalStorage üzerinden kalıcı olarak saklanır.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1.Projeyi Klonla
 
-### Analyzing the Bundle Size
+```bash
+git clone https://github.com/kullanici-adin/finans-analiz.git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
 
-### Making a Progressive Web App
+2.Proje Dizine Gir
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+cd finans-analiz
+```
 
-### Advanced Configuration
+3.Gerekli Paketleri Yükle
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+npm install
+```
 
-### Deployment
+4.Uygulamayı Çalıştır
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm start
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```

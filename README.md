@@ -21,8 +21,6 @@ Kullanıcılar gelir ve gider ekleyebilir, aylık maaşlarını girip kalan mikt
 
 \*Binlik ayırıcı format (örnek: 30.000 TL)
 
-\*Negatif değer girişini engelleme
-
 Kullanılan Teknolojiler
 
 \*\*React

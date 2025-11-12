@@ -53,25 +53,9 @@ function TransactionForm(props) {
         type="text"
         id="Miktar"
         name="Miktar"
-        placeholder="örnek: 1.250"
-        value={
-          miktar
-            ? parseFloat(
-                miktar.replace(/\./g, "").replace(/,/g, ".")
-              ).toLocaleString("tr-TR")
-            : ""
-        }
-        onChange={(e) => {
-          const temizDeger = e.target.value
-            .replace(/\./g, "")
-            .replace(/,/g, ".");
-          const sayi = parseFloat(temizDeger);
-          if (!isNaN(sayi) && sayi >= 0) {
-            setMiktar(sayi.toString());
-          } else if (e.target.value === "") {
-            setMiktar("");
-          }
-        }}
+        placeholder="örnek: 1250"
+        value={miktar}
+        onChange={(e) => setMiktar(e.target.value)}
       />
 
       <label htmlFor="Tarih">Tarih:</label>

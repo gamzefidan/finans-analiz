@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+import { PieChart, Pie, Tooltip, Legend } from "recharts";
 import { useState, useEffect } from "react";
 import TransactionForm from "./components/TransactionForm";
 import "./App.css";
@@ -12,14 +12,12 @@ function App() {
   });
 
   function yeniKayitEkle(yeniVeri) {
-    setTransactions((prevTransactions) => [...prevTransactions, yeniVeri]);
+    setTransactions((prev) => [...prev, yeniVeri]);
     console.log("Formdan gelen yeni veri:", yeniVeri);
   }
 
   function kayitSil(index) {
-    setTransactions((prevTransactions) =>
-      prevTransactions.filter((_, i) => i !== index)
-    );
+    setTransactions((prev) => prev.filter((_, i) => i !== index));
   }
 
   useEffect(() => {
@@ -38,20 +36,16 @@ function App() {
   const bakiye = gelirToplam - giderToplam;
 
   const giderVerisi = [];
-
   transactions
     .filter((item) => item.type === "gider")
     .forEach((item) => {
-      const mevcutKategori = giderVerisi.find(
-        (g) => g.kategori === item.kategori
-      );
-      if (mevcutKategori) {
-        mevcutKategori.miktar += item.miktar;
+      const mevcut = giderVerisi.find((g) => g.kategori === item.kategori);
+      if (mevcut) {
+        mevcut.miktar += item.miktar;
       } else {
         giderVerisi.push({
           kategori: item.kategori,
           miktar: item.miktar,
-          oran: maas ? ((item.miktar / maas) * 100).toFixed(1) : 0,
         });
       }
     });
@@ -79,21 +73,12 @@ function App() {
         <div>
           <label htmlFor="maas">Aylık Maaş:</label>
           <input
-            type="text"
+            type="number"
             id="maas"
-            placeholder="örnek: 30.000"
-            value={maas.toLocaleString("tr-TR")}
-            onChange={(e) => {
-              const temizDeger = e.target.value
-                .replace(/\./g, "")
-                .replace(/,/g, ".");
-              const sayi = parseFloat(temizDeger);
-              if (!isNaN(sayi) && sayi >= 0) {
-                setmaas(sayi);
-              } else if (e.target.value === "") {
-                setmaas(0);
-              }
-            }}
+            name="maas"
+            placeholder="örnek: 30000"
+            value={maas}
+            onChange={(e) => setmaas(Number(e.target.value))}
           />
         </div>
 
@@ -120,34 +105,20 @@ function App() {
         </ul>
 
         <div className="chart-container">
-          <div>
-            <h2>Gider Dağılımı (Aylık Maaş Oranları)</h2>
-            <PieChart width={400} height={400}>
-              <Pie
-                data={giderVerisi}
-                dataKey="miktar"
-                nameKey="kategori"
-                cx="50%"
-                cy="50%"
-                outerRadius={120}
-                label
-              >
-                {giderVerisi.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={`hsl(${(index * 60) % 360}, 70%, 60%)`}
-                  />
-                ))}
-              </Pie>
-              <Tooltip
-                formatter={(value, name, props) => [
-                  `${value} TL (%${props.payload.oran})`,
-                  name,
-                ]}
-              />
-              <Legend />
-            </PieChart>
-          </div>
+          <h2>Gider Dağılımı</h2>
+          <PieChart width={400} height={400}>
+            <Pie
+              data={giderVerisi}
+              dataKey="miktar"
+              nameKey="kategori"
+              cx="50%"
+              cy="50%"
+              outerRadius={120}
+              label
+            />
+            <Tooltip />
+            <Legend />
+          </PieChart>
         </div>
       </div>
     </div>

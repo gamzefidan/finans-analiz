@@ -1,4 +1,4 @@
-import { PieChart, Pie, Tooltip, Legend } from "recharts";
+import { PieChart, Pie, Tooltip, Legend, Cell } from "recharts";
 import { useState, useEffect } from "react";
 import TransactionForm from "./components/TransactionForm";
 import "./App.css";
@@ -114,8 +114,16 @@ function App() {
               cx="50%"
               cy="50%"
               outerRadius={120}
+              fill="#8884d8"
               label
-            />
+            >
+              {giderVerisi.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={`hsl(${index * 60}, 70%, 60%)`}
+                />
+              ))}
+            </Pie>
             <Tooltip />
             <Legend />
           </PieChart>

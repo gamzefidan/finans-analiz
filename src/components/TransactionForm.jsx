@@ -38,6 +38,7 @@ function TransactionForm(props) {
         <option value="gelir">Gelir</option>
         <option value="gider">Gider</option>
       </select>
+
       <label htmlFor="Kategori">Kategori:</label>
       <input
         ref={kategoriInputRef}

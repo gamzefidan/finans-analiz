@@ -1,73 +1,77 @@
 import { useState, useRef } from "react";
 
 function TransactionForm(props) {
-  const [tur, setTur] = useState("");
-  const [kategori, setKategori] = useState("");
-  const [miktar, setMiktar] = useState("");
-  const [tarih, setTarih] = useState("");
-  const kategoriInputRef = useRef(null);
+  const [type, setType] = useState("");
+  const [category, setCategory] = useState("");
+  const [amount, setAmount] = useState("");
+  const [date, setDate] = useState("");
+
+  const categoryInputRef = useRef(null);
+
+  // Form valid mi?
+  const isFormValid = type && category && amount && date;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const yeniVeri = {
-      type: tur,
-      kategori: kategori,
-      miktar: parseFloat(miktar),
-      tarih: tarih,
-    };
-    props.onYeniKayitEkle(yeniVeri);
 
-    setTur("");
-    setKategori("");
-    setMiktar("");
-    setTarih("");
-    kategoriInputRef.current.focus();
+    const newRecord = {
+      type: type,
+      category: category,
+      amount: parseFloat(amount),
+      date: date,
+    };
+
+    props.onAddRecord(newRecord);
+
+    setType("");
+    setCategory("");
+    setAmount("");
+    setDate("");
+
+    categoryInputRef.current.focus();
   };
 
   return (
     <form className="TransactionForm" onSubmit={handleSubmit}>
-      <h2>Yeni Kayıt Ekle</h2>
-      <label htmlFor="type">Tür:</label>
-      <select
-        id="type"
-        name="type"
-        value={tur}
-        onChange={(e) => setTur(e.target.value)}
-      >
-        <option value="">Seçiniz</option>
-        <option value="gelir">Gelir</option>
-        <option value="gider">Gider</option>
+      <h2>Add New Record</h2>
+
+      <label htmlFor="type">Type:</label>
+      <select id="type" value={type} onChange={(e) => setType(e.target.value)}>
+        <option value="">Select</option>
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
       </select>
 
-      <label htmlFor="Kategori">Kategori:</label>
+      <label htmlFor="category">Category:</label>
       <input
-        ref={kategoriInputRef}
+        ref={categoryInputRef}
         type="text"
-        id="Kategori"
-        name="Kategori"
-        placeholder="Kategori giriniz"
-        value={kategori}
-        onChange={(e) => setKategori(e.target.value)}
-      />
-      <label htmlFor="Miktar">Miktar:</label>
-      <input
-        type="text"
-        id="Miktar"
-        name="Miktar"
-        placeholder="örnek: 1250"
-        value={miktar}
-        onChange={(e) => setMiktar(e.target.value)}
+        id="category"
+        placeholder="Enter category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
       />
 
-      <label htmlFor="Tarih">Tarih:</label>
+      <label htmlFor="amount">Amount:</label>
+      <input
+        type="text"
+        id="amount"
+        placeholder="example: 1250"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      />
+
+      <label htmlFor="date">Date:</label>
       <input
         type="date"
-        id="Tarih"
-        name="Tarih"
-        value={tarih}
-        onChange={(e) => setTarih(e.target.value)}
+        id="date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
       />
-      <button type="submit">Ekle</button>
+
+      <button type="submit" disabled={!isFormValid}>
+        Add
+      </button>
     </form>
   );
 }

@@ -3,43 +3,45 @@ Kişisel Finans Analiz Uygulaması
 Bu proje, kişisel gelir ve giderleri takip etmeyi sağlayan basit bir React uygulamasıdır.
 Kullanıcılar gelir ve gider ekleyebilir, aylık maaşlarını girip kalan miktarı görüntüleyebilir ve gider dağılımını grafik üzerinden inceleyebilir.
 
-\*\*\*Özellikler
+Özellikler
 
-\*Gelir ve gider ekleme
+Gelir ve gider ekleme
 
-\*Tarih, kategori ve miktar bilgileriyle detaylı kayıt
+Tarih, kategori ve miktar bilgileriyle detaylı kayıt
 
-\*LocalStorage kullanımı (veriler tarayıcıda saklanır)
+LocalStorage kullanımı (veriler tarayıcıda saklanır)
 
-\*Aylık maaş giriş alanı
+Aylık maaş giriş alanı
 
-\*Kalan para ve toplam özet hesaplaması
+Kalan para ve toplam özet hesaplaması
 
-\*Gider dağılımını gösteren pasta grafiği (Recharts)
+Gider dağılımını gösteren pasta grafiği (Recharts)
 
-\*Saydam arka plan (blur efekti) ile modern arayüz
+Saydam arka plan (blur efekti) ile modern arayüz
 
-\*Binlik ayırıcı format (örnek: 30.000 TL)
+Binlik ayırıcı format (örnek: 30.000 TL)
 
 Kullanılan Teknolojiler
 
-\*\*React
+React
 
-\*\*Recharts
+Recharts
 
-\*\*CSS
+CSS
 
-\*\*LocalStorage
+LocalStorage
 
-\*\*Geliştirici Notları
+Geliştirici Notları
 
-\*Grafik yalnızca gider verisi eklendiğinde görünür.
+Grafik yalnızca gider verisi eklendiğinde görünür.
 
-\*Maaş ve miktar alanlarında binlik ayırıcı bulunur.
+Maaş ve miktar alanlarında binlik ayırıcı bulunur.
 
-\*Form elemanları Enter tuşu ile de ekleme yapar.
+Form elemanları Enter tuşu ile de ekleme yapar.
 
-\*Veriler LocalStorage üzerinden kalıcı olarak saklanır.
+Veriler LocalStorage üzerinden kalıcı olarak saklanır.
+
+Kurulum Adımları
 
 1.Projeyi Klonla
 

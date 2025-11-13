@@ -5,18 +5,18 @@ import "./App.css";
 import bg from "./assets/background.png";
 
 function App() {
-  const [maas, setmaas] = useState(0);
+  const [salary, setSalary] = useState(0);
+
   const [transactions, setTransactions] = useState(() => {
-    const kayitliVeri = localStorage.getItem("transactions");
-    return kayitliVeri ? JSON.parse(kayitliVeri) : [];
+    const saved = localStorage.getItem("transactions");
+    return saved ? JSON.parse(saved) : [];
   });
 
-  function yeniKayitEkle(yeniVeri) {
-    setTransactions((prev) => [...prev, yeniVeri]);
-    console.log("Formdan gelen yeni veri:", yeniVeri);
+  function addNewRecord(newRecord) {
+    setTransactions((prev) => [...prev, newRecord]);
   }
 
-  function kayitSil(index) {
+  function deleteRecord(index) {
     setTransactions((prev) => prev.filter((_, i) => i !== index));
   }
 
@@ -24,28 +24,30 @@ function App() {
     localStorage.setItem("transactions", JSON.stringify(transactions));
   }, [transactions]);
 
-  const gelirToplam = transactions
-    .filter((item) => item.type === "gelir")
-    .reduce((toplam, item) => toplam + item.miktar, 0);
+  const totalIncome = transactions
+    .filter((item) => item.type === "income")
+    .reduce((total, item) => total + item.amount, 0);
 
-  const giderToplam = transactions
-    .filter((item) => item.type === "gider")
-    .reduce((toplam, item) => toplam + item.miktar, 0);
+  const totalExpense = transactions
+    .filter((item) => item.type === "expense")
+    .reduce((total, item) => total + item.amount, 0);
 
-  const kalanPara = maas - giderToplam;
-  const bakiye = gelirToplam - giderToplam;
+  const balance = totalIncome - totalExpense;
+  const remaining = salary - totalExpense;
 
-  const giderVerisi = [];
+  const expenseChartData = [];
   transactions
-    .filter((item) => item.type === "gider")
+    .filter((item) => item.type === "expense")
     .forEach((item) => {
-      const mevcut = giderVerisi.find((g) => g.kategori === item.kategori);
-      if (mevcut) {
-        mevcut.miktar += item.miktar;
+      const existing = expenseChartData.find(
+        (e) => e.category === item.category
+      );
+      if (existing) {
+        existing.amount += item.amount;
       } else {
-        giderVerisi.push({
-          kategori: item.kategori,
-          miktar: item.miktar,
+        expenseChartData.push({
+          category: item.category,
+          amount: item.amount,
         });
       }
     });
@@ -57,67 +59,62 @@ function App() {
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
         minHeight: "100vh",
         color: "#fff",
       }}
     >
-      <div
-        className="container"
-        style={{ maxWidth: "900px", margin: "0 auto" }}
-      >
-        <h1>Kişisel Finans Analiz Uygulaması</h1>
+      <div className="container">
+        <h1>Personal Finance Tracker</h1>
 
-        <TransactionForm onYeniKayitEkle={yeniKayitEkle} />
+        <TransactionForm onAddRecord={addNewRecord} />
 
         <div>
-          <label htmlFor="maas">Aylık Maaş:</label>
+          <label htmlFor="salary">Monthly Salary:</label>
           <input
             type="number"
-            id="maas"
-            name="maas"
-            placeholder="örnek: 30000"
-            value={maas}
-            onChange={(e) => setmaas(Number(e.target.value))}
+            id="salary"
+            placeholder="Example: 30000"
+            value={salary}
+            onChange={(e) => setSalary(Number(e.target.value))}
           />
         </div>
 
         <div>
-          <h2>Özet</h2>
-          <p>Toplam Gelir: {gelirToplam.toLocaleString("tr-TR")} TL</p>
-          <p>Toplam Gider: {giderToplam.toLocaleString("tr-TR")} TL</p>
-          <p>Bakiye: {bakiye.toLocaleString("tr-TR")} TL</p>
-          <p>Kalan Para: {kalanPara.toLocaleString("tr-TR")} TL</p>
+          <h2>Summary</h2>
+          <p>Total Income: {totalIncome.toLocaleString("tr-TR")} TL</p>
+          <p>Total Expense: {totalExpense.toLocaleString("tr-TR")} TL</p>
+          <p>Balance: {balance.toLocaleString("tr-TR")} TL</p>
+          <p>Remaining: {remaining.toLocaleString("tr-TR")} TL</p>
         </div>
 
         <ul>
           {transactions.map((item, index) => (
             <li key={index}>
-              {item.tarih} - {item.kategori} - {item.type} - {item.miktar} TL
+              {item.date} - {item.category} - {item.type} -{" "}
+              {item.amount.toLocaleString("tr-TR")} TL
               <button
-                style={{ marginLeft: "10px" }}
-                onClick={() => kayitSil(index)}
+                onClick={() => deleteRecord(index)}
+                style={{ marginLeft: 10 }}
               >
-                Sil
+                Delete
               </button>
             </li>
           ))}
         </ul>
 
         <div className="chart-container">
-          <h2>Gider Dağılımı</h2>
+          <h2>Expense Distribution</h2>
           <PieChart width={400} height={400}>
             <Pie
-              data={giderVerisi}
-              dataKey="miktar"
-              nameKey="kategori"
+              data={expenseChartData}
+              dataKey="amount"
+              nameKey="category"
               cx="50%"
               cy="50%"
               outerRadius={120}
-              fill="#8884d8"
               label
             >
-              {giderVerisi.map((entry, index) => (
+              {expenseChartData.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={`hsl(${index * 60}, 70%, 60%)`}

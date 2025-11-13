@@ -8,7 +8,6 @@ function TransactionForm(props) {
 
   const categoryInputRef = useRef(null);
 
-  // Form valid mi?
   const isFormValid = type && category && amount && date;
 
   const handleSubmit = (e) => {

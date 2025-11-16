@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-function TransactionForm(props) {
+function TransactionForm({ onAddRecord }) {
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState("");
@@ -14,13 +14,13 @@ function TransactionForm(props) {
     e.preventDefault();
 
     const newRecord = {
-      type: type,
-      category: category,
+      type,
+      category,
       amount: parseFloat(amount),
-      date: date,
+      date,
     };
 
-    props.onAddRecord(newRecord);
+    onAddRecord(newRecord);
 
     setType("");
     setCategory("");
@@ -32,44 +32,44 @@ function TransactionForm(props) {
 
   return (
     <form className="TransactionForm" onSubmit={handleSubmit}>
-      <h2>Add New Record</h2>
+      <h2>Yeni Kayıt Ekle</h2>
 
-      <label htmlFor="type">Type:</label>
-      <select id="type" value={type} onChange={(e) => setType(e.target.value)}>
-        <option value="">Select</option>
-        <option value="income">Income</option>
-        <option value="expense">Expense</option>
+      <label>Tür:</label>
+      <select value={type} onChange={(e) => setType(e.target.value)}>
+        <option value="">Seçiniz</option>
+        <option value="income">Gelir</option>
+        <option value="expense">Gider</option>
       </select>
 
-      <label htmlFor="category">Category:</label>
+      <label>Kategori:</label>
       <input
         ref={categoryInputRef}
         type="text"
-        id="category"
-        placeholder="Enter category"
+        placeholder="Kategori"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       />
 
-      <label htmlFor="amount">Amount:</label>
+      <label>Miktar:</label>
       <input
         type="text"
-        id="amount"
-        placeholder="example: 1250"
+        placeholder="Örn: 1250"
         value={amount}
-        onChange={(e) => setAmount(e.target.value)}
+        onChange={(e) => {
+          const clean = e.target.value.replace(/\./g, "").replace(",", ".");
+          setAmount(clean);
+        }}
       />
 
-      <label htmlFor="date">Date:</label>
+      <label>Tarih:</label>
       <input
         type="date"
-        id="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
       />
 
       <button type="submit" disabled={!isFormValid}>
-        Add
+        Ekle
       </button>
     </form>
   );

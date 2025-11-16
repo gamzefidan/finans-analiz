@@ -42,6 +42,7 @@ function App() {
       const existing = expenseChartData.find(
         (e) => e.category === item.category
       );
+
       if (existing) {
         existing.amount += item.amount;
       } else {
@@ -64,27 +65,27 @@ function App() {
       }}
     >
       <div className="container">
-        <h1>Personal Finance Tracker</h1>
+        <h1>Kişisel Finans Analiz Uygulaması</h1>
 
         <TransactionForm onAddRecord={addNewRecord} />
 
         <div>
-          <label htmlFor="salary">Monthly Salary:</label>
+          <label htmlFor="salary">Aylık Maaş:</label>
           <input
             type="number"
             id="salary"
-            placeholder="Example: 30000"
+            placeholder="Örnek: 30000"
             value={salary}
             onChange={(e) => setSalary(Number(e.target.value))}
           />
         </div>
 
         <div>
-          <h2>Summary</h2>
-          <p>Total Income: {totalIncome.toLocaleString("tr-TR")} TL</p>
-          <p>Total Expense: {totalExpense.toLocaleString("tr-TR")} TL</p>
-          <p>Balance: {balance.toLocaleString("tr-TR")} TL</p>
-          <p>Remaining: {remaining.toLocaleString("tr-TR")} TL</p>
+          <h2>Özet</h2>
+          <p>Toplam Gelir: {totalIncome.toLocaleString("tr-TR")} TL</p>
+          <p>Toplam Gider: {totalExpense.toLocaleString("tr-TR")} TL</p>
+          <p>Bakiye: {balance.toLocaleString("tr-TR")} TL</p>
+          <p>Kalan Para: {remaining.toLocaleString("tr-TR")} TL</p>
         </div>
 
         <ul>
@@ -96,14 +97,14 @@ function App() {
                 onClick={() => deleteRecord(index)}
                 style={{ marginLeft: 10 }}
               >
-                Delete
+                Sil
               </button>
             </li>
           ))}
         </ul>
 
         <div className="chart-container">
-          <h2>Expense Distribution</h2>
+          <h2>Gider Dağılımı</h2>
           <PieChart width={400} height={400}>
             <Pie
               data={expenseChartData}

@@ -1,47 +1,47 @@
-#Kişisel Finans Analiz Uygulaması
+# Kişisel Finans Analiz Uygulaması
 
-Bu proje, kişisel gelir ve giderleri takip etmeyi sağlayan basit bir React uygulamasıdır.
-Kullanıcılar gelir ve gider ekleyebilir, aylık maaşlarını girip kalan miktarı görüntüleyebilir ve gider dağılımını grafik üzerinden inceleyebilir.
+- Bu proje, kişisel gelir ve giderleri takip etmeyi sağlayan basit bir React uygulamasıdır.
+  Kullanıcılar gelir ve gider ekleyebilir, aylık maaşlarını girip kalan miktarı görüntüleyebilir ve gider dağılımını grafik üzerinden inceleyebilir.
 
-##Özellikler
+# Özellikler
 
--Gelir ve gider ekleme
+1. Gelir ve gider ekleme
 
--Tarih, kategori ve miktar bilgileriyle detaylı kayıt
+2. Tarih, kategori ve miktar bilgileriyle detaylı kayıt
 
--ocalStorage kullanımı (veriler tarayıcıda saklanır)
+3. ocalStorage kullanımı (veriler tarayıcıda saklanır)
 
--Aylık maaş giriş alanı
+4. Aylık maaş giriş alanı
 
--Kalan para ve toplam özet hesaplaması
+5. Kalan para ve toplam özet hesaplaması
 
--Gider dağılımını gösteren pasta grafiği (Recharts)
+6. Gider dağılımını gösteren pasta grafiği (Recharts)
 
--Saydam arka plan (blur efekti) ile modern arayüz
+7. Saydam arka plan (blur efekti) ile modern arayüz
 
--Binlik ayırıcı format (örnek: 30.000 TL)
+8. Binlik ayırıcı format (örnek: 30.000 TL)
 
-###Kullanılan Teknolojiler
+# Kullanılan Teknolojiler
 
--React
+1. React
 
--Recharts
+2. Recharts
 
--CSS
+3. CSS
 
--LocalStorage
+4. LocalStorage
 
-####Geliştirici Notları
+# Geliştirici Notları
 
--Grafik yalnızca gider verisi eklendiğinde görünür.
+1. Grafik yalnızca gider verisi eklendiğinde görünür.
 
--Maaş ve miktar alanlarında binlik ayırıcı bulunur.
+2. Maaş ve miktar alanlarında binlik ayırıcı bulunur.
 
--Form elemanları Enter tuşu ile de ekleme yapar.
+3. Form elemanları Enter tuşu ile de ekleme yapar.
 
--Veriler LocalStorage üzerinden kalıcı olarak saklanır.
+4. Veriler LocalStorage üzerinden kalıcı olarak saklanır.
 
-####Kurulum Adımları
+# Kurulum Adımları
 
 1.Projeyi Klonla
 

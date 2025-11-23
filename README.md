@@ -9,7 +9,7 @@
 
 2. Tarih, kategori ve miktar bilgileriyle detaylı kayıt
 
-3. ocalStorage kullanımı (veriler tarayıcıda saklanır)
+3. LocalStorage kullanımı (veriler tarayıcıda saklanır)
 
 4. Aylık maaş giriş alanı
 

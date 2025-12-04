@@ -1,27 +1,27 @@
-# Kişisel Finans Analiz Uygulaması
+# PERSONAL FINANCE ANALYSIS APPLICATION
 
-- Bu proje, kişisel gelir ve giderleri takip etmeyi sağlayan basit bir React uygulamasıdır.
-  Kullanıcılar gelir ve gider ekleyebilir, aylık maaşlarını girip kalan miktarı görüntüleyebilir ve gider dağılımını grafik üzerinden inceleyebilir.
+- This project is a simple React application that allows users to track their personal income and expenses.
+  Users can add income and expense entries, input their monthly salary, view the remaining balance, and analyze expense distribution through a chart.
 
-# Özellikler
+# FEATURES
 
-1. Gelir ve gider ekleme
+1. Add income and expense entries
 
-2. Tarih, kategori ve miktar bilgileriyle detaylı kayıt
+2. Record detailed information including date, category, and amount
 
-3. LocalStorage kullanımı (veriler tarayıcıda saklanır)
+3. Data storage using LocalStorage (kept in the browser)
 
-4. Aylık maaş giriş alanı
+4. Monthly salary input field
 
-5. Kalan para ve toplam özet hesaplaması
+5. Automatic calculation of remaining balance and summary totals
 
-6. Gider dağılımını gösteren pasta grafiği (Recharts)
+6. Expense distribution pie chart (Recharts)
 
-7. Saydam arka plan (blur efekti) ile modern arayüz
+7. Modern interface with transparent background (blur effect)
 
-8. Binlik ayırıcı format (örnek: 30.000 TL)
+8. Thousand separator formatting (e.g., 30,000 TL)
 
-# Kullanılan Teknolojiler
+# TECHNOLOGIES USED
 
 1. React
 
@@ -31,38 +31,38 @@
 
 4. LocalStorage
 
-# Geliştirici Notları
+# DEVELOPER NOTES
 
-1. Grafik yalnızca gider verisi eklendiğinde görünür.
+1. The chart only appears when expense data is available.
 
-2. Maaş ve miktar alanlarında binlik ayırıcı bulunur.
+2. Both salary and amount fields include thousand separators.
 
-3. Form elemanları Enter tuşu ile de ekleme yapar.
+3. Form entries can also be added using the Enter key.
 
-4. Veriler LocalStorage üzerinden kalıcı olarak saklanır.
+4. All data is persistently stored in LocalStorage.
 
-# Kurulum Adımları
+# INSTALLATION STEPS
 
-1.Projeyi Klonla
+1. Clone the repository
 
 ```bash
 git clone https://github.com/kullanici-adin/finans-analiz.git
 
 ```
 
-2.Proje Dizine Gir
+2. Navigate to the project directory
 
 ```bash
 cd finans-analiz
 ```
 
-3.Gerekli Paketleri Yükle
+3. Install dependencies
 
 ```bash
 npm install
 ```
 
-4.Uygulamayı Çalıştır
+4. Run the application
 
 ```bash
 npm start
